@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noticia Text", serif;
+}
+
+body {
+  background-color: #FFDF8C;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  width: 90vw;
+  margin: 6vh 5vw 0 5vw;
+  min-height: 94vh;
+  background-color: #FFFFFF;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+
+/*# sourceMappingURL=index.css.map */
