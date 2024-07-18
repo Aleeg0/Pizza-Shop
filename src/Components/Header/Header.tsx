@@ -5,8 +5,8 @@ import CartSvg from "../../assets/cartSvg.tsx";
 
 const Header: FC = () => {
   return (
-    <>
-      <div className={styles.header}>
+    <div className={styles.header}>
+      <div className={styles.content}>
         <div className={styles.info}>
           <img src={Logo} alt="appLogo"/>
           <div className={styles.title}>
@@ -25,7 +25,7 @@ const Header: FC = () => {
         </button>
         </div>
       <hr className={styles.splitter}/>
-    </>
+    </div>
   );
 };
 
