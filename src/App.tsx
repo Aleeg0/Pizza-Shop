@@ -2,6 +2,7 @@ import Header from "./Components/Header/Header.tsx";
 import React from "react";
 import SelectorArrow from "./assets/selectorArrow.svg"
 import Searcher from "./assets/Searcher.svg"
+import Pizza from "./Components/Pizza/Pizza.tsx";
 
 const App = () => {
   const [isSelectorOpen, setIsSelectorOpen] = React.useState(false);
@@ -46,6 +47,12 @@ const App = () => {
               placeholder="Search..."
             />
           </div>
+        </div>
+      </div>
+      <div className="content">
+        <h1>All pizzas</h1>
+        <div className="container">
+          <Pizza/>
         </div>
       </div>
     </div>
