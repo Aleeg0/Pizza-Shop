@@ -51,12 +51,12 @@ export const filtersSlice = createSlice({
     setSortBy: (state, action: PayloadAction<{name: string,value: string}>) => {
       state.sortBy = action.payload;
     },
-    setSearchText: (state, action: PayloadAction<string>) => {
+    setSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     }
   },
 })
 
-export const {setCategory, setSortBy, setSearchText} = filtersSlice.actions;
+export const {setCategory, setSortBy, setSearchValue} = filtersSlice.actions;
 
 export default filtersSlice.reducer;
