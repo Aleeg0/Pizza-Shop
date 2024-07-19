@@ -15,8 +15,8 @@ export const sortByValues: {name: string,value: string}[] = [
     value: "title"
   },
   {
-    name: "by popularity",
-    value: "popularity",
+    name: "by rating",
+    value: "rating",
   },
   {
     name: "by price",
@@ -32,13 +32,13 @@ export const sortByValues: {name: string,value: string}[] = [
 export interface filtersState {
   categoryId: number,
   sortBy: {name: string,value: string},
-  searchText: string,
+  searchValue: string,
 }
 
 const initialState: filtersState  = {
   categoryId: 0,
   sortBy: sortByValues[0],
-  searchText: "",
+  searchValue: "",
 }
 
 export const filtersSlice = createSlice({
@@ -52,7 +52,7 @@ export const filtersSlice = createSlice({
       state.sortBy = action.payload;
     },
     setSearchText: (state, action: PayloadAction<string>) => {
-      state.searchText = action.payload;
+      state.searchValue = action.payload;
     }
   },
 })
