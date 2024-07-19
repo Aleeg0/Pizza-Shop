@@ -1,25 +1,40 @@
 import AddCartSvg from "../SVGS/AddCartSvg.tsx";
 import styles from "../../Styles/Components/_pizza.module.scss"
+import {FC} from "react";
 
-const Pizza = () => {
+interface IPizzaProps {
+  id: number,
+  title: string,
+  imgURL: string,
+  sizes: number[],
+  price: number,
+}
+
+const Pizza: FC<IPizzaProps> = ({
+  id,
+  title,
+  imgURL,
+  price,
+  sizes
+}) => {
 
   return (
     <div className={styles.pizzaContainer}>
-      <img src="/PizzasImg/image-1.png" alt="pizza"/>
-      <h3>Nameing</h3>
+      <img src={imgURL} alt="pizza"/>
+      <h3>{title}</h3>
       <div className={styles.filtersContainer}>
         <ul className="thickness">
           <li>Thin</li>
           <li  className={styles.active}>Traditional</li>
         </ul>
         <ul className="size">
-          <li >26 sm.</li>
-          <li>30 sm.</li>
-          <li className={styles.active}>40 sm.</li>
+          {sizes.map(size =>
+            <li>{size} sm.</li>
+          )}
         </ul>
       </div>
       <div className={styles.controls}>
-        <b>from 20 $</b>
+        <b>from {price} $</b>
         <button type="button">
           <AddCartSvg/>
           <p>Add</p>
