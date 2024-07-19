@@ -1,5 +1,6 @@
 import filterReducer from "./Slices/FiltersSlice"
 import pizzasReducer from "./Slices/PizzasSlice.ts";
+import {configureStore} from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {
