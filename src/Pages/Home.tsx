@@ -7,16 +7,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../Redux/Store.ts";
 import {fetchPizzas, IPizza} from "../Redux/Slices/PizzasSlice.ts";
 import {useEffect} from "react";
-import {filtersState} from "../Redux/Slices/FiltersSlice.ts";
 
 const Home = () => {
   const {pizzas} = useSelector((state: RootState) => state.pizzas);
-  const s: filtersState = useSelector((state: RootState) => state.filter);
+  const {categoryId,sortBy,searchValue} = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchPizzas(s));
-  },[])
+    dispatch(fetchPizzas({
+      categoryId,
+      sortBy,
+      searchValue
+    }));
+  },[categoryId,sortBy,searchValue])
 
   return (
     <div className="wrapper">
