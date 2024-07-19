@@ -1,0 +1,108 @@
+.pizzaContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+
+    img{
+        width: 260px;
+        height: 260px;
+        margin-bottom: 11px;
+    }
+
+    h3{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 19px;
+    }
+}
+
+.filtersContainer{
+    width: 280px;
+    height: 85px;
+    padding: 7px 5px;
+    margin-bottom: 17px;
+
+    background: #F3F3F3;
+    border-radius: 10px;
+
+    ul{
+        list-style: none;
+        display: flex;
+        margin-bottom: 7px;
+        column-gap: 7px;
+
+        li{
+            font-size: 14px;
+            font-weight: bold;
+            height: 32px;
+            padding: 6px 10px 15px 10px;
+            width: 100%;
+            text-align: center;
+
+            &.active{
+                background: #FFFFFF;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+.controls{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3px;
+
+    b{
+        font-size: 22px;
+    }
+
+    button{
+        position: relative;
+        width: 132px;
+        height: 40px;
+        background: #FE5F1E;
+        border: 1px solid #FE5F1E;
+        border-radius: 30px;
+        cursor: pointer;
+
+        p, svg{
+            cursor: pointer;
+        }
+
+        p{
+            position: relative;
+            font-size: 16px;
+            font-weight: bold;
+            color: #FFFFFF;
+            transition: transform .4s ease-in-out;
+        }
+
+        svg{
+            position: absolute;
+            top: 14px;
+            left: 18px;
+            transition: opacity .3s ease-in-out;
+            opacity: 0;
+        }
+
+        &:hover{
+            background-color: lighten(#FE5F1E, 6%);
+
+            p{
+                transform: translateX(5px);
+            }
+
+            svg{
+                opacity: 1;
+            }
+        }
+
+        &:active{
+            background-color: darken(#FE5F1E, 4%);
+        }
+    }
+}
