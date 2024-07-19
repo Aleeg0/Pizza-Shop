@@ -1,8 +1,9 @@
 import searchImg from "../../assets/Searcher.svg";
+import styles from "../../Styles/Components/_searcher.module.scss"
 
 const Searcher = () => {
   return (
-    <div className="searcher">
+    <div className={styles.searcher}>
       <img src={searchImg} alt="sercher"/>
       <input
         type="text"
