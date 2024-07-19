@@ -1,6 +1,6 @@
 import AddCartSvg from "../SVGS/AddCartSvg.tsx";
 import styles from "../../Styles/Components/_pizza.module.scss"
-import {FC} from "react";
+import {FC, useState} from "react";
 
 interface IPizzaProps {
   id: number,
@@ -17,6 +17,10 @@ const Pizza: FC<IPizzaProps> = ({
   price,
   sizes
 }) => {
+  const [curSizeId, setCurSizeId] = useState<number>(0);
+  const [curThicknessId, setCurThicknessId] = useState<number>(0);
+
+  const thicknessTypes: string[] = ["Thin","Traditional"];
 
   return (
     <div className={styles.pizzaContainer}>
@@ -24,12 +28,22 @@ const Pizza: FC<IPizzaProps> = ({
       <h3>{title}</h3>
       <div className={styles.filtersContainer}>
         <ul className="thickness">
-          <li>Thin</li>
-          <li  className={styles.active}>Traditional</li>
+          {thicknessTypes.map((thickness, i) =>
+            <li
+              key={i}
+              className={curThicknessId === i ? styles.active : ""}
+              onClick={() => setCurThicknessId(i)}
+            >{thickness}</li>
+          )}
         </ul>
         <ul className="size">
-          {sizes.map(size =>
-            <li>{size} sm.</li>
+          {sizes.map((size,i) =>
+            <li
+              key={i}
+              className={curSizeId === i ? styles.active : ""}
+              onClick={() => setCurSizeId(i)}
+            >{size} sm.
+            </li>
           )}
         </ul>
       </div>
