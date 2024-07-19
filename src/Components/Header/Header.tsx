@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import Logo from "/logo.svg";
-import styles from "./_header.module.scss";
-import CartSvg from "../../assets/cartSvg.tsx";
+import styles from "../../Styles/Components/_header.module.scss";
+import CartSvg from "../SVGS/cartSvg.tsx";
 
 const Header: FC = () => {
   return (
