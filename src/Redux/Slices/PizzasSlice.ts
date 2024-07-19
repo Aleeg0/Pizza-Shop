@@ -15,8 +15,14 @@ export interface IPizza {
 }
 
 export const fetchPizzas =
-  createAsyncThunk<IPizza[], filtersState, { state: RootState }>("pizzas/fetchPizzas", async () => {
-    const {data} = await axios.get("https://daa000b52605539c.mokky.dev/pizzas");
+  createAsyncThunk<IPizza[], filtersState, { state: RootState }>("pizzas/fetchPizzas", async (params) => {
+    const {categoryId, sortBy,searchValue} = params;
+    const urlParam: string = [
+      `sortBy=${sortBy.value}`,
+      `${categoryId ? "category=" + categoryId : ""}`,
+      `${searchValue ? "title=" + searchValue : ""}`
+    ].join("&");
+    const {data} = await axios.get(`https://daa000b52605539c.mokky.dev/pizzas?${urlParam}`);
     return data;
   })
 
