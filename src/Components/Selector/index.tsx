@@ -3,6 +3,7 @@ import SelectorArrow from "../../assets/selectorArrow.svg";
 import {setSortBy, sortByValues} from "../../Redux/Slices/FiltersSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../Redux/Store.ts";
+import styles from "../../Styles/Components/_selector.module.scss"
 
 const Selector = () => {
   const [isSelectorOpen, setIsSelectorOpen] = React.useState(false);
@@ -31,11 +32,11 @@ const Selector = () => {
   }, [])
 
   return (
-    <div  className={`selector ${isSelectorOpen ? "active" : ""}`}>
+    <div  className={`${styles.selector} ${isSelectorOpen ? styles.active : ""}`}>
       <p>Sorting by:
         <span
           ref={spanRef}
-          className={isSelectorOpen ? "active" : ""}
+          className={isSelectorOpen ? styles.active : ""}
           onClick={() => setIsSelectorOpen(!isSelectorOpen)}>{sortBy.name}
         </span>
       </p>
@@ -47,12 +48,12 @@ const Selector = () => {
       />
       {
         isSelectorOpen &&
-          <div ref={popUpRef} className="pop-up-filters">
+          <div ref={popUpRef} className={styles.popUpFilters}>
               <ul>
                 {sortByValues.map((item, i) =>
                   <li
                     key={i}
-                    className={item.value === sortBy.value ? "active" : ""}
+                    className={item.value === sortBy.value ? styles.active : ""}
                     onClick={() => dispatch(setSortBy(item))}
                   >
                     {item.name}

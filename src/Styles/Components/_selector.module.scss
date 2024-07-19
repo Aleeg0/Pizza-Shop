@@ -1,0 +1,71 @@
+@import "../mixin";
+
+.selector{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+
+  &.active{
+    img{
+      transform: rotateX(180deg);
+    }
+  }
+
+  img{
+    cursor: pointer;
+  }
+
+  span{
+    color: #FE5F1E;
+    position: relative;
+    cursor: pointer;
+    margin: 0 7px;
+    @include underlineAnimation(#FE5F1E);
+
+    &.active{
+      &::after{
+        transform-origin: left bottom;
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.popUpFilters{
+  position: absolute;
+  width: 160px;
+  top: 24px;
+  right: -2px;
+
+  background-color: #FFFFFF;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+
+  ul {
+    list-style: none;
+    font-size: 14px;
+
+    li{
+      padding: 10px 11px 9px 14px;
+      cursor: pointer;
+
+      &.active{
+        background-color: rgba(254, 95, 30, 0.20);
+        color: #FE5F1E;
+      }
+
+      &:hover:not(.active){
+        background-color: rgba(254, 95, 30, 0.10);
+      }
+
+      &:first-child{
+        border-radius: 10px 10px 0 0;
+      }
+
+      &:last-child{
+        border-radius: 0 0 10px 10px;
+      }
+    }
+  }
+}
