@@ -17,12 +17,15 @@ export interface IPizza {
 export const fetchPizzas =
   createAsyncThunk<IPizza[], filtersState, { state: RootState }>("pizzas/fetchPizzas", async (params) => {
     const {categoryId, sortBy,searchValue} = params;
-    const urlParam: string = [
-      `sortBy=${sortBy.value}`,
-      `${categoryId ? "category=" + categoryId : ""}`,
-      `${searchValue ? "title=" + searchValue : ""}`
-    ].join("&");
-    const {data} = await axios.get(`https://daa000b52605539c.mokky.dev/pizzas?${urlParam}`);
+    const urlParams = new URLSearchParams();
+    urlParams.append("sortBy", sortBy.value);
+    if (categoryId) {
+      urlParams.append("category", categoryId.toString());
+    }
+    if (searchValue) {
+      urlParams.append("title", `*${searchValue}*`);
+    }
+    const {data} = await axios.get(`https://daa000b52605539c.mokky.dev/pizzas?${urlParams}`);
     return data;
   })
 
