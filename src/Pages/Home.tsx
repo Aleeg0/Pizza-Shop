@@ -14,7 +14,7 @@ const Home = () => {
           <Categories/>
           <div className="inputFilters">
             <Selector/>
-            <Selector/>
+            <Searcher/>
           </div>
         </div>
         <div className="content">
