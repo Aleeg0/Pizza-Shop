@@ -1,0 +1,30 @@
+.pagesContainer{
+    ul {
+        list-style: none;
+        display: flex;
+        column-gap: 15px;
+
+        li{
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            background-color: #F3F3F3;
+            border-radius: 8px;
+            transition: all .3s ease-in-out;
+
+            &:hover:not(.active){
+                background-color: #a5a4a4;
+                color: #f1f1f1;
+                transform: scale(1.05);
+            }
+
+            &.active{
+                background-color: #FE5F1E;
+                color: #FFFFFF;
+                transform: scale(1.05);
+            }
+        }
+    }
+}
