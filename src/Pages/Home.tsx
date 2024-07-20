@@ -9,12 +9,15 @@ import {IPizza} from "../Redux/Types/IPizzas.ts";
 import {fetchPizzas} from "../Redux/fetchPizzas.ts"
 import {useEffect} from "react";
 import Pagination from "../Components/Pagination";
+import {ILoadingStatus} from "../Redux/Types/ILoadingStatus.ts";
+import Skeleton from "../Components/Pizza/Skeleton.tsx";
 
 const Home = () => {
-  const {pizzas} = useSelector((state: RootState) => state.pizzas);
+  const {pizzas, loading} = useSelector((state: RootState) => state.pizzas);
   const {categoryId,sortBy,searchValue} = useSelector((state: RootState) => state.filter);
   const {paginationData} = useSelector((state: RootState) => state.pages);
   const dispatch = useDispatch<AppDispatch>();
+  const SKELETONS_COUNT = 8;
 
   useEffect(() => {
     dispatch(fetchPizzas({
@@ -38,12 +41,17 @@ const Home = () => {
       <div className="content">
         <h1>All pizzas</h1>
         <div className="container">
-          {pizzas.map((pizza: IPizza) =>
+          {loading === ILoadingStatus.SUCCEEDED ?
+            pizzas.map((pizza: IPizza) =>
             <Pizza
               key={pizza.id}
               {...pizza}
-            />
-          )}
+            />)
+            :
+            [...Array(SKELETONS_COUNT)].map((_, i) =>
+              <Skeleton key={i}/>)
+          }
+
         </div>
         <Pagination
           {...paginationData}
