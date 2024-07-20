@@ -5,19 +5,22 @@ import Searcher from "../Components/Searcher";
 import Selector from "../Components/Selector";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../Redux/Store.ts";
-import {fetchPizzas, IPizza} from "../Redux/Slices/PizzasSlice.ts";
+import {IPizza} from "../Redux/Types/IPizzas.ts";
+import {fetchPizzas} from "../Redux/fetchPizzas.ts"
 import {useEffect} from "react";
 
 const Home = () => {
   const {pizzas} = useSelector((state: RootState) => state.pizzas);
   const {categoryId,sortBy,searchValue} = useSelector((state: RootState) => state.filter);
+  const {paginationData} = useSelector((state: RootState) => state.pages);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchPizzas({
       categoryId,
       sortBy,
-      searchValue
+      searchValue,
+      paginationData
     }));
   },[categoryId,sortBy,searchValue])
 
