@@ -37,7 +37,6 @@ export const pagesSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(fetchPizzas.pending, (state) => {
             state.loading = ILoadingStatus.PENDING;
-            state.paginationData = DEFAULT_PAGINATION;
         });
         builder.addCase(fetchPizzas.fulfilled, (state, action: PayloadAction<MokkyResponse>) => {
             state.loading = ILoadingStatus.SUCCEEDED;
