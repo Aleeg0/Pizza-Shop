@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {ILoadingStatus} from "../Types/ILoadingStatus.ts";
-import {IPizza} from "../Types/IPizzas.ts";
+import {IPizza} from "../Types/IPizza.ts";
 import {fetchPizzas} from "../fetchPizzas.ts";
 import {MokkyResponse} from "../Types/MokkyResponse.ts";
 
