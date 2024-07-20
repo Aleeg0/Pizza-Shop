@@ -8,6 +8,7 @@ import {AppDispatch, RootState} from "../Redux/Store.ts";
 import {IPizza} from "../Redux/Types/IPizzas.ts";
 import {fetchPizzas} from "../Redux/fetchPizzas.ts"
 import {useEffect} from "react";
+import Pagination from "../Components/Pagination";
 
 const Home = () => {
   const {pizzas} = useSelector((state: RootState) => state.pizzas);
@@ -22,7 +23,7 @@ const Home = () => {
       searchValue,
       paginationData
     }));
-  },[categoryId,sortBy,searchValue])
+  },[categoryId,sortBy,searchValue,paginationData.current_page])
 
   return (
     <div className="wrapper">
@@ -44,6 +45,9 @@ const Home = () => {
             />
           )}
         </div>
+        <Pagination
+          {...paginationData}
+        />
       </div>
     </div>
   );
