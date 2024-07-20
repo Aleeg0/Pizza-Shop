@@ -1,11 +1,14 @@
+import {configureStore} from "@reduxjs/toolkit";
 import filterReducer from "./Slices/FiltersSlice"
 import pizzasReducer from "./Slices/PizzasSlice.ts";
-import {configureStore} from "@reduxjs/toolkit";
+import pagesReducer from "./Slices/PagesSlice.ts";
+
 
 export const store = configureStore({
   reducer: {
     filter: filterReducer,
-    pizzas: pizzasReducer
+    pizzas: pizzasReducer,
+    pages: pagesReducer
   },
 })
 
