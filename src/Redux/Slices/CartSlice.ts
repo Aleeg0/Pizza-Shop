@@ -3,7 +3,7 @@ import {ICartPizza} from "../Types/ICartPizza.ts";
 import {ICartItem} from "../Types/ICartItem.ts";
 
 
-interface ICartState {
+export interface ICartState {
   totalSum: number,
   totalCount: number,
   items: ICartItem[]
