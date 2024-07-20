@@ -5,7 +5,7 @@ import Searcher from "../Components/Searcher";
 import Selector from "../Components/Selector";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../Redux/Store.ts";
-import {IPizza} from "../Redux/Types/IPizzas.ts";
+import {IPizza} from "../Redux/Types/IPizza.ts";
 import {fetchPizzas} from "../Redux/fetchPizzas.ts"
 import {useEffect} from "react";
 import Pagination from "../Components/Pagination";
@@ -29,7 +29,7 @@ const Home = () => {
   },[categoryId,sortBy,searchValue,paginationData.current_page])
 
   return (
-    <div className="wrapper">
+    <>
       <Header/>
       <div className="filters">
         <Categories/>
@@ -57,7 +57,7 @@ const Home = () => {
           {...paginationData}
         />
       </div>
-    </div>
+    </>
   );
 };
 
