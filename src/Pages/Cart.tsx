@@ -5,14 +5,20 @@ import ThinArrowSvg from "../Components/SVGS/ThinArrowSvg.tsx";
 import Header from "../Components/Header";
 import {Link} from "react-router-dom";
 import CartPizza from "../Components/CartItem";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../Redux/Store.ts";
 import emptyCart from "../assets/emptyCart.svg"
+import {clearCart} from "../Redux/Slices/CartSlice.ts";
 
 const Cart = () => {
-  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const {items, totalSum,totalCount} = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
 
-  if (cartItems.length === 0) {
+  const onRemoveAllClick = () => {
+    dispatch(clearCart());
+  }
+
+  if (items.length === 0) {
     return (
       <>
         <Header/>
@@ -24,7 +30,10 @@ const Cart = () => {
           </p>
           <img src={emptyCart} alt="emptyCart" />
           <Link to="/">
-            <button className={styles.goBackBtn}>
+            <button
+              className={styles.goBackBtn}
+              onClick={onRemoveAllClick}
+            >
               <ThinArrowSvg/>
               Go back
             </button>
@@ -46,7 +55,7 @@ const Cart = () => {
           </div>
         </div>
         <div className={styles.content}>
-          {cartItems.map((item) =>
+          {items.map((item) =>
             <CartPizza
               key={item.id}
               {...item}
@@ -54,8 +63,8 @@ const Cart = () => {
           )}
         </div>
         <div className={styles.info}>
-          <p>Total pizzas: <b>3</b></p>
-          <p>Order amount: <b className={styles.price}>900 $</b></p>
+          <p>Total pizzas: <b>{totalCount}</b></p>
+          <p>Order amount: <b className={styles.price}>{totalSum} $</b></p>
         </div>
         <div className={styles.controls}>
           <Link to="/">
