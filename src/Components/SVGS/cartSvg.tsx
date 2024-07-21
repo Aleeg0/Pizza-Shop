@@ -3,13 +3,13 @@ const CartSvg = () => {
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M6.33333 16.3333C7.06971 16.3333 7.66667 15.7363 7.66667 15C7.66667 14.2636 7.06971 13.6666 6.33333 13.6666C5.59695 13.6666 5 14.2636 5 15C5 15.7363 5.59695 16.3333 6.33333 16.3333Z"
-        stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       <path
         d="M14.3333 16.3333C15.0697 16.3333 15.6667 15.7363 15.6667 15C15.6667 14.2636 15.0697 13.6666 14.3333 13.6666C13.597 13.6666 13 14.2636 13 15C13 15.7363 13.597 16.3333 14.3333 16.3333Z"
-        stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       <path
         d="M4.78033 4.99996H16.3337L15.2137 10.5933C15.1527 10.9002 14.9857 11.1759 14.742 11.3722C14.4982 11.5684 14.1932 11.6726 13.8803 11.6666H6.83366C6.50811 11.6694 6.19281 11.5529 5.9472 11.3393C5.70158 11.1256 5.54264 10.8294 5.50032 10.5066L4.48699 2.82663C4.44497 2.50612 4.28794 2.21179 4.04513 1.9984C3.80231 1.78502 3.49024 1.66712 3.16699 1.66663H1.66699"
-        stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 };
