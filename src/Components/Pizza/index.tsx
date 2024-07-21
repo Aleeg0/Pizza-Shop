@@ -1,6 +1,8 @@
 import AddToCartSvg from "../SVGS/AddToCartSvg.tsx";
 import styles from "../../Styles/Components/_pizza.module.scss"
 import {FC, useState} from "react";
+import {useDispatch} from "react-redux";
+import {addItemToCart} from "../../Redux/Slices/CartSlice.ts";
 
 interface IPizzaProps {
   id: number,
@@ -9,6 +11,8 @@ interface IPizzaProps {
   sizes: number[],
   types: string[],
   price: number[],
+  rating: number,
+  category: number,
 }
 
 const Pizza: FC<IPizzaProps> = ({
@@ -17,10 +21,26 @@ const Pizza: FC<IPizzaProps> = ({
   imgURL,
   price,
   types,
-  sizes
+  sizes,
+  rating,
+  category
 }) => {
   const [curSizeId, setCurSizeId] = useState<number>(0);
   const [curThicknessId, setCurThicknessId] = useState<number>(0);
+  const dispatch = useDispatch();
+
+  const onAddToCartClick = () => {
+    dispatch(addItemToCart({
+      id,
+      title,
+      imgURL,
+      type: types[curThicknessId],
+      size: sizes[curSizeId],
+      price: price[curSizeId],
+      rating,
+      category,
+    }))
+  }
 
 
   return (
@@ -50,7 +70,10 @@ const Pizza: FC<IPizzaProps> = ({
       </div>
       <div className={styles.controls}>
         <b>from {price[curSizeId]} $</b>
-        <button type="button">
+        <button
+          type="button"
+          onClick={onAddToCartClick}
+        >
           <AddToCartSvg/>
           <p>Add</p>
         </button>
