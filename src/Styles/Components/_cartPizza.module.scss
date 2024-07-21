@@ -1,0 +1,103 @@
+.CartPizza{
+  padding-top: 30px;
+  margin-bottom: 30px;
+  border-top: 1px solid #F4F4F4;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  b{
+    font-size: 22px;
+  }
+
+  button{
+    border: none;
+    outline: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    svg{
+      circle, path{
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.pizza{
+  width: 375px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+
+  img{
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+  }
+}
+
+.title{
+  display: flex;
+  flex-direction: column;
+
+  h3{
+    font-size: 22px;
+    margin-bottom: 2px;
+  }
+
+  p{
+    font-size: 18px;
+    color: #8D8D8D;
+  }
+}
+
+.controls{
+  width: 102px;
+  height: 33px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button{
+    svg{
+      circle,path{
+        transition: all .3s ease-in-out;
+      }
+    }
+
+    &:hover{
+      svg{
+        circle{
+          fill: #FE5F1E;
+        }
+        path{
+          fill: #FFFFFF;
+        }
+      }
+    }
+  }
+}
+
+.removeBtn{
+  svg{
+    circle, path{
+      transition: all .3s ease-in-out;
+    }
+  }
+
+  &:hover{
+    svg{
+      circle{
+        fill: #ff5555;
+        stroke: #ff5555;
+      }
+      path{
+        fill: #FFFFFF;
+      }
+    }
+  }
+}
