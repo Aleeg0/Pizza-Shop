@@ -3,8 +3,12 @@ import Logo from "/logo.svg";
 import styles from "../../Styles/Components/_header.module.scss";
 import CartSvg from "../SVGS/cartSvg.tsx";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {RootState} from "../../Redux/Store.ts";
 
 const Header: FC = () => {
+  const {totalSum, totalCount} = useSelector((state: RootState) => state.cart)
+
   return (
     <div className={styles.header}>
       <div className={styles.content}>
@@ -22,10 +26,10 @@ const Header: FC = () => {
             type="button"
             className={styles.cartButton}
           >
-            <p>100 $</p>
+            <p>{totalSum} $</p>
             <span/>
             <CartSvg/>
-            <p>3</p>
+            <p>{totalCount}</p>
           </button>
         </Link>
         </div>
