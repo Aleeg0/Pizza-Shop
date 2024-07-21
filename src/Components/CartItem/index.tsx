@@ -4,6 +4,11 @@ import IncrementCartItemSvg from "../SVGS/incrementCartItemSvg.tsx";
 import styles from "../../Styles/Components/_cartPizza.module.scss"
 import {ICartPizza} from "../../Redux/Types/ICartPizza.ts";
 import {FC} from "react";
+import {useDispatch} from "react-redux";
+import {
+  addItemToCart, removeAllItemsFromCartById,
+  removeItemFromCartById
+} from "../../Redux/Slices/CartSlice.ts";
 
 interface ICartPizzaProps {
   id: number,
@@ -12,6 +17,19 @@ interface ICartPizzaProps {
 }
 
 const CartPizza: FC<ICartPizzaProps> = ({id,item,count}) => {
+  const dispatch = useDispatch();
+
+  const onDecrementClick = () => {
+    dispatch(removeItemFromCartById(id));
+  }
+
+  const onIncrementClick = () => {
+    dispatch(addItemToCart(item));
+  }
+
+  const onRemoveClick = () => {
+    dispatch(removeAllItemsFromCartById(id));
+  }
 
   return (
     <div className={styles.CartPizza}>
@@ -23,16 +41,26 @@ const CartPizza: FC<ICartPizzaProps> = ({id,item,count}) => {
         </div>
       </div>
       <div className={styles.controls}>
-        <button className={styles.decrementBtn}>
+        <button
+          disabled={count === 1}
+          className={styles.decrementBtn}
+          onClick={onDecrementClick}
+        >
           <DecrementCartItemSvg/>
         </button>
         <b>{count}</b>
-        <button className={styles.incrementBtn}>
+        <button
+          className={styles.incrementBtn}
+          onClick={onIncrementClick}
+        >
           <IncrementCartItemSvg/>
         </button>
       </div>
-      <b>{item.price * count} $</b>
-      <button className={styles.removeBtn}>
+      <b>{(item.price * count).toFixed(2)} $</b>
+      <button
+        className={styles.removeBtn}
+        onClick={onRemoveClick}
+      >
         <RemoveCartItemSvg/>
       </button>
     </div>
