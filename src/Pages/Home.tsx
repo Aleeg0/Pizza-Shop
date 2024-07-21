@@ -19,6 +19,8 @@ const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
   const SKELETONS_COUNT = 8;
 
+
+  // TODO: fix bug with pages and categories
   useEffect(() => {
     dispatch(fetchPizzas({
       categoryId,
