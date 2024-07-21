@@ -79,6 +79,18 @@
         }
       }
     }
+
+    &:disabled{
+      svg{
+        circle{
+          fill: #FFFFFF;
+          stroke: #9a9a9a;
+        }
+        path{
+          fill: #9a9a9a;
+        }
+      }
+    }
   }
 }
 
