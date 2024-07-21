@@ -7,9 +7,32 @@ import {Link} from "react-router-dom";
 import CartPizza from "../Components/CartItem";
 import {useSelector} from "react-redux";
 import {RootState} from "../Redux/Store.ts";
+import emptyCart from "../assets/emptyCart.svg"
 
 const Cart = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
+
+  if (cartItems.length === 0) {
+    return (
+      <>
+        <Header/>
+        <div className={styles.emptyCart}>
+          <h1>Cart is empty 😕</h1>
+          <p>
+            Most likely, you haven't ordered a pizza yet.
+            To order a pizza, go to the main page.
+          </p>
+          <img src={emptyCart} alt="emptyCart" />
+          <Link to="/">
+            <button className={styles.goBackBtn}>
+              <ThinArrowSvg/>
+              Go back
+            </button>
+          </Link>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
