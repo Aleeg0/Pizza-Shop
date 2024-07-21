@@ -8,7 +8,7 @@ interface IPizzaProps {
   imgURL: string,
   sizes: number[],
   types: string[],
-  price: string[],
+  price: number[],
 }
 
 const Pizza: FC<IPizzaProps> = ({
