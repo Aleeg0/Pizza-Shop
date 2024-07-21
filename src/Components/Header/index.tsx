@@ -26,7 +26,7 @@ const Header: FC = () => {
             type="button"
             className={styles.cartButton}
           >
-            <p>{totalSum} $</p>
+            <p>{totalSum.toFixed(2)} $</p>
             <span/>
             <CartSvg/>
             <p>{totalCount}</p>
