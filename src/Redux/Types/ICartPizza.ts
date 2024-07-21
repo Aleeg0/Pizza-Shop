@@ -2,8 +2,8 @@ export interface ICartPizza {
   id: number,
   title: string,
   imgURL: string,
-  types: number,
-  sizes: number,
+  type: string,
+  size: number,
   price: number,
   category: number,
   rating: number
