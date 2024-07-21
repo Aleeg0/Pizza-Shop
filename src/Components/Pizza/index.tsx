@@ -1,4 +1,4 @@
-import AddCartSvg from "../SVGS/AddCartSvg.tsx";
+import AddToCartSvg from "../SVGS/AddToCartSvg.tsx";
 import styles from "../../Styles/Components/_pizza.module.scss"
 import {FC, useState} from "react";
 
@@ -7,7 +7,8 @@ interface IPizzaProps {
   title: string,
   imgURL: string,
   sizes: number[],
-  price: number,
+  types: string[],
+  price: string[],
 }
 
 const Pizza: FC<IPizzaProps> = ({
@@ -15,12 +16,12 @@ const Pizza: FC<IPizzaProps> = ({
   title,
   imgURL,
   price,
+  types,
   sizes
 }) => {
   const [curSizeId, setCurSizeId] = useState<number>(0);
   const [curThicknessId, setCurThicknessId] = useState<number>(0);
 
-  const thicknessTypes: string[] = ["Thin","Traditional"];
 
   return (
     <div className={styles.pizzaContainer}>
@@ -28,7 +29,7 @@ const Pizza: FC<IPizzaProps> = ({
       <h3>{title}</h3>
       <div className={styles.filtersContainer}>
         <ul className="thickness">
-          {thicknessTypes.map((thickness, i) =>
+          {types.map((thickness, i) =>
             <li
               key={i}
               className={curThicknessId === i ? styles.active : ""}
@@ -48,9 +49,9 @@ const Pizza: FC<IPizzaProps> = ({
         </ul>
       </div>
       <div className={styles.controls}>
-        <b>from {price} $</b>
+        <b>from {price[curSizeId]} $</b>
         <button type="button">
-          <AddCartSvg/>
+          <AddToCartSvg/>
           <p>Add</p>
         </button>
       </div>
