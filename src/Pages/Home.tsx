@@ -7,20 +7,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../Redux/Store.ts";
 import {IPizza} from "../Redux/Types/IPizza.ts";
 import {fetchPizzas} from "../Redux/fetchPizzas.ts"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import Pagination from "../Components/Pagination";
 import {ILoadingStatus} from "../Redux/Types/ILoadingStatus.ts";
 import Skeleton from "../Components/Pizza/Skeleton.tsx";
+import {setCurrentPage} from "../Redux/Slices/PagesSlice.ts";
 
 const Home = () => {
   const {pizzas, loading} = useSelector((state: RootState) => state.pizzas);
   const {categoryId,sortBy,searchValue} = useSelector((state: RootState) => state.filter);
   const {paginationData} = useSelector((state: RootState) => state.pages);
   const dispatch = useDispatch<AppDispatch>();
+  const [isPagination, setIsPagination] = useState<boolean>(false);
   const SKELETONS_COUNT = 8;
 
-
-  // TODO: fix bug with pages and categories
   useEffect(() => {
     dispatch(fetchPizzas({
       categoryId,
@@ -28,7 +28,19 @@ const Home = () => {
       searchValue,
       paginationData
     }));
-  },[categoryId,sortBy,searchValue,paginationData.current_page])
+  },[categoryId, searchValue, sortBy]);
+
+  useEffect(() => {
+    if (isPagination){
+      dispatch(fetchPizzas({
+        categoryId,
+        sortBy,
+        searchValue,
+        paginationData
+      }));
+    }
+    setIsPagination(false);
+  }, [isPagination]);
 
   return (
     <>
@@ -57,6 +69,7 @@ const Home = () => {
         </div>
         <Pagination
           {...paginationData}
+          onPaginationChange={setIsPagination}
         />
       </div>
     </>
