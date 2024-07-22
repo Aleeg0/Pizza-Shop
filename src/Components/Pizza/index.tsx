@@ -29,7 +29,12 @@ const Pizza: FC<IPizzaProps> = ({
 }) => {
   const [curSizeId, setCurSizeId] = useState<number>(0);
   const [curThicknessId, setCurThicknessId] = useState<number>(0);
-  const cartItems = useSelector((state:RootState) => state.cart.items);
+  const cartPizza: ICartItem | undefined = useSelector((state:RootState) => (
+    state.cart.items.find(cartItem =>
+      cartItem.item.id === id
+      && cartItem.item.size === sizes[curSizeId]
+      && cartItem.item.type === types[curThicknessId])
+  ));
   const dispatch = useDispatch();
 
   const onAddToCartClick = () => {
@@ -44,9 +49,6 @@ const Pizza: FC<IPizzaProps> = ({
       category,
     }))
   };
-
-  const cartPizza: ICartItem | undefined = cartItems.find(cartItem =>
-    cartItem.item.id === id && cartItem.item.size === sizes[curSizeId] && cartItem.item.type === types[curThicknessId]);
 
   return (
     <div className={styles.pizzaContainer}>
