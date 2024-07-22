@@ -35,8 +35,8 @@ const Selector = () => {
   const onSelectorChange = (item: {name: string,value:string}) => {
     dispatch(setCurrentPage(1));
     dispatch(setSortBy(item));
+    setIsSelectorOpen(false);
   }
-
 
   return (
     <div  className={`${styles.selector} ${isSelectorOpen ? styles.active : ""}`}>
