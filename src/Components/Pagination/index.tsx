@@ -6,20 +6,29 @@ import {FC} from "react";
 interface PaginationProps {
   total_pages: number,
   current_page: number,
+  onPaginationChange: (status:boolean) => void,
 }
 
-const Pagination: FC<PaginationProps> = ({current_page,total_pages}) => {
+const Pagination: FC<PaginationProps> = ({current_page,total_pages, onPaginationChange}) => {
   const dispatch = useDispatch();
 
   const onClickFirst = () => {
     if (current_page !== 1){
-      dispatch(setCurrentPage(current_page - 1))
+      dispatch(setCurrentPage(current_page - 1));
+      onPaginationChange(true);
     }
   }
 
   const onClickLast = () => {
-    if (current_page !== total_pages)
+    if (current_page !== total_pages) {
       dispatch(setCurrentPage(current_page + 1));
+      onPaginationChange(true);
+    }
+  }
+
+  const onClickPage = (id:number) => {
+    dispatch(setCurrentPage(id));
+    onPaginationChange(true);
   }
 
   return (
@@ -33,7 +42,7 @@ const Pagination: FC<PaginationProps> = ({current_page,total_pages}) => {
           <li
             key={i + 1}
             className={i + 1 === current_page ? styles.active : ""}
-            onClick={() => dispatch(setCurrentPage(i + 1))}
+            onClick={() => onClickPage(i+1)}
           >{i+1}
           </li>
         )}
