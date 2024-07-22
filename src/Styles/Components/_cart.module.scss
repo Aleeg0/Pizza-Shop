@@ -79,12 +79,35 @@ button{
 .EmptyAllBtn{
   display: flex;
   align-items: center;
+  cursor: pointer;
+  
   svg{
     margin-right: 7px;
+    cursor: pointer;
+
+    path{
+      cursor: pointer;
+      transition: stroke .1s ease-in-out;
+    }
   }
 
   p {
     color: #B6B6B6;
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+  }
+
+  &:hover{
+    svg{
+      path{
+        stroke: #ff5555;
+      }
+    }
+
+    p{
+      color: #B6B6B6;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    }
   }
 }
 
