@@ -40,7 +40,6 @@ export const pagesSlice = createSlice({
         });
         builder.addCase(fetchPizzas.fulfilled, (state, action: PayloadAction<MokkyResponse>) => {
             state.loading = ILoadingStatus.SUCCEEDED;
-            console.log(action.payload.meta);
             state.paginationData = action.payload.meta;
         });
         builder.addCase(fetchPizzas.rejected, (state) => {

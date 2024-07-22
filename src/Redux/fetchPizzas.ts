@@ -25,6 +25,5 @@ createAsyncThunk<MokkyResponse, IPizzaParams, { state: RootState }>("pizzas/fetc
         urlParams.append("title", `*${searchValue}*`);
     }
     const {data} = await axios.get(`https://daa000b52605539c.mokky.dev/pizzas?${urlParams}`);
-    console.log(data);
     return data;
 })
