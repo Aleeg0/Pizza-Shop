@@ -114,7 +114,28 @@ button{
 .content{
   display: flex;
   flex-direction: column;
+  height: 140*3px;
   margin-bottom: 40px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #9a9a9a;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background-color: #FE5F1E;
+  }
 }
 
 .info{
