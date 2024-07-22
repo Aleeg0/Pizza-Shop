@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../Redux/Store.ts";
 import {IPizza} from "../Redux/Types/IPizza.ts";
 import {fetchPizzas} from "../Redux/fetchPizzas.ts"
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import Pagination from "../Components/Pagination";
 import {ILoadingStatus} from "../Redux/Types/ILoadingStatus.ts";
 import Skeleton from "../Components/Pizza/Skeleton.tsx";
@@ -23,24 +23,26 @@ const Home = () => {
   const {paginationData} = useSelector((state: RootState) => state.pages);
   const dispatch = useDispatch<AppDispatch>();
   const [isPagination, setIsPagination] = useState<boolean>(false);
-  const isMounted = useRef<boolean>(true);
+  const [isMounted, setIsMounted] = useState<boolean>(true);
   const navigate = useNavigate();
-  const SKELETONS_COUNT = 8;
+  const SKELETONS_COUNT: number = 8;
 
-    useEffect(() => {
-    if (!isMounted.current) {
+  // for filters
+  useEffect(() => {
+    if (!isMounted) {
       dispatch(fetchPizzas({
         categoryId,
         sortBy,
         searchValue,
-        paginationData
+        paginationData: {...paginationData, current_page: 1},
       }));
       window.scrollTo({top: 0, left: 0, behavior: "smooth"});
     }
-  },[categoryId, searchValue, sortBy]);
+  },[categoryId, searchValue, sortBy, isMounted]);
 
+  // for pagination
   useEffect(() => {
-    if (!isMounted.current && isPagination){
+    if (!isMounted && isPagination){
       dispatch(fetchPizzas({
         categoryId,
         sortBy,
@@ -49,10 +51,10 @@ const Home = () => {
       }));
       window.scrollTo({top: 0, left: 0, behavior: "smooth"});
       setIsPagination(false);
-      console.log(isPagination);
     }
   }, [isPagination]);
 
+  // for parse querySearch
   useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
@@ -63,29 +65,31 @@ const Home = () => {
       }
       dispatch(setCurrentPage(params.page ? Number(params.page) : 1));
     }
-    isMounted.current = false;
+    setIsMounted(false);
   }, []);
 
-  useEffect(() => {
 
-    let query: string | null = null;
-    if (categoryId !== 0) {
-      query = qs.stringify({
-        page: paginationData.current_page,
-        limit: paginationData.per_page,
-        sortBy: sortBy.value,
-        category: categoryId
-      });
+  useEffect(() => {
+    if (!isMounted) {
+      let query: string;
+      if (categoryId !== 0) {
+        query = qs.stringify({
+          page: paginationData.current_page,
+          limit: paginationData.per_page,
+          sortBy: sortBy.value,
+          category: categoryId
+        });
+      }
+      else {
+        query = qs.stringify({
+          page: paginationData.current_page,
+          limit: paginationData.per_page,
+          sortBy: sortBy.value
+        });
+      }
+      navigate(`?${query}`);
     }
-    else {
-      query = qs.stringify({
-        page: paginationData.current_page,
-        limit: paginationData.per_page,
-        sortBy: sortBy.value
-      });
-    }
-    navigate(`?${query}`);
-  }, [categoryId, searchValue, sortBy, paginationData]);
+  }, [categoryId, searchValue, sortBy, paginationData.current_page]);
 
   return (
     <>

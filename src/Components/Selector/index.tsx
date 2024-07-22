@@ -4,7 +4,6 @@ import {setSortBy, sortByValues} from "../../Redux/Slices/FiltersSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../Redux/Store.ts";
 import styles from "../../Styles/Components/_selector.module.scss"
-import {setCurrentPage} from "../../Redux/Slices/PagesSlice.ts";
 
 const Selector = () => {
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
@@ -33,7 +32,6 @@ const Selector = () => {
   }, []);
 
   const onSelectorChange = (item: {name: string,value:string}) => {
-    dispatch(setCurrentPage(1));
     dispatch(setSortBy(item));
     setIsSelectorOpen(false);
   }
