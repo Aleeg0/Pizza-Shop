@@ -28,6 +28,7 @@ const Home = () => {
       searchValue,
       paginationData
     }));
+    window.scrollTo({top: 0, left: 0, behavior: "smooth"});
   },[categoryId, searchValue, sortBy]);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ const Home = () => {
       }));
     }
     setIsPagination(false);
+    window.scrollTo({top: 0, left: 0, behavior: "smooth"});
   }, [isPagination]);
 
   return (
