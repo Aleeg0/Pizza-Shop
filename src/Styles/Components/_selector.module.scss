@@ -30,6 +30,16 @@
       }
     }
   }
+
+  @media (max-width: 749px) {
+    p{
+      margin-right: 10px;
+    }
+
+    span{
+      display: none;
+    }
+  }
 }
 
 .popUpFilters{

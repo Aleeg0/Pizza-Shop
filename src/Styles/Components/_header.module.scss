@@ -17,6 +17,13 @@
         // for REACT LINKS
         text-decoration: none;
     }
+    
+    @media (max-width: 749px) {
+        padding: 50px 10vw 40px 10vw;
+        row-gap: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .info{
