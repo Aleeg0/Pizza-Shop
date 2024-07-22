@@ -9,10 +9,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../Redux/Store.ts";
 import emptyCart from "../assets/emptyCart.svg"
 import {clearCart} from "../Redux/Slices/CartSlice.ts";
+import {useAutoAnimate} from "@formkit/auto-animate/react";
 
 const Cart = () => {
   const {items, totalSum,totalCount} = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
+  const [animationRef] = useAutoAnimate();
 
   const onRemoveAllClick = () => {
     dispatch(clearCart());
@@ -55,14 +57,14 @@ const Cart = () => {
             <p>Empty Cart</p>
           </div>
         </div>
-        <div className={styles.content}>
+        <ul ref={animationRef} className={styles.content}>
           {items.map((item) =>
-            <CartPizza
+            <li key={item.id}><CartPizza
               key={item.id}
               {...item}
-            />
+            /></li>
           )}
-        </div>
+        </ul>
         <div className={styles.info}>
           <p>Total pizzas: <b>{totalCount}</b></p>
           <p>Order amount: <b className={styles.price}>{totalSum} $</b></p>
