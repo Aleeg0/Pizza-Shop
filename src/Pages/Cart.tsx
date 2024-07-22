@@ -32,7 +32,6 @@ const Cart = () => {
           <Link to="/">
             <button
               className={styles.goBackBtn}
-              onClick={onRemoveAllClick}
             >
               <ThinArrowSvg/>
               Go back
@@ -49,7 +48,9 @@ const Cart = () => {
       <div className={styles.cart}>
         <div className={styles.title}>
           <h1><CartSvg/>Cart</h1>
-          <div className={styles.EmptyAllBtn}>
+          <div
+            className={styles.EmptyAllBtn}
+            onClick={onRemoveAllClick}>
             <TrashSvg/>
             <p>Empty Cart</p>
           </div>
