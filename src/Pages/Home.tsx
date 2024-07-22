@@ -11,7 +11,7 @@ import {useEffect, useState} from "react";
 import Pagination from "../Components/Pagination";
 import {ILoadingStatus} from "../Redux/Types/ILoadingStatus.ts";
 import Skeleton from "../Components/Pizza/Skeleton.tsx";
-import {setCurrentPage} from "../Redux/Slices/PagesSlice.ts";
+
 
 const Home = () => {
   const {pizzas, loading} = useSelector((state: RootState) => state.pizzas);
