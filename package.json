@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
     "@types/lodash.debounce": "^4.0.9",
+    "ahooks": "^3.8.0",
     "axios": "^1.7.2",
     "dart-sass": "^1.25.0",
     "lodash.debounce": "^4.0.8",
