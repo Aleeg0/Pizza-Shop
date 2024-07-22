@@ -1,8 +1,10 @@
 import AddToCartSvg from "../SVGS/AddToCartSvg.tsx";
 import styles from "../../Styles/Components/_pizza.module.scss"
 import {FC, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addItemToCart} from "../../Redux/Slices/CartSlice.ts";
+import {RootState} from "../../Redux/Store.ts";
+import {ICartItem} from "../../Redux/Types/ICartItem.ts";
 
 interface IPizzaProps {
   id: number,
@@ -27,6 +29,7 @@ const Pizza: FC<IPizzaProps> = ({
 }) => {
   const [curSizeId, setCurSizeId] = useState<number>(0);
   const [curThicknessId, setCurThicknessId] = useState<number>(0);
+  const cartItems = useSelector((state:RootState) => state.cart.items);
   const dispatch = useDispatch();
 
   const onAddToCartClick = () => {
@@ -40,8 +43,10 @@ const Pizza: FC<IPizzaProps> = ({
       rating,
       category,
     }))
-  }
+  };
 
+  const cartPizza: ICartItem | null = cartItems.find(cartItem =>
+    cartItem.item.id === id && cartItem.item.size === sizes[curSizeId] && cartItem.item.type === types[curThicknessId]);
 
   return (
     <div className={styles.pizzaContainer}>
@@ -64,6 +69,7 @@ const Pizza: FC<IPizzaProps> = ({
               className={curSizeId === i ? styles.active : ""}
               onClick={() => setCurSizeId(i)}
             >{size} sm.
+
             </li>
           )}
         </ul>
@@ -73,9 +79,11 @@ const Pizza: FC<IPizzaProps> = ({
         <button
           type="button"
           onClick={onAddToCartClick}
+          className={cartPizza ? styles.withValueBtn : ""}
         >
           <AddToCartSvg/>
           <p>Add</p>
+          <span><p>{cartPizza && cartPizza.count}</p></span>
         </button>
       </div>
     </div>
