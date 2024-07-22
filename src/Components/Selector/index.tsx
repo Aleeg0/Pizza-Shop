@@ -1,21 +1,22 @@
-import React from 'react';
+import {useState,useRef,useEffect} from 'react';
 import SelectorArrow from "../../assets/selectorArrow.svg";
 import {setSortBy, sortByValues} from "../../Redux/Slices/FiltersSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../Redux/Store.ts";
 import styles from "../../Styles/Components/_selector.module.scss"
+import {setCurrentPage} from "../../Redux/Slices/PagesSlice.ts";
 
 const Selector = () => {
-  const [isSelectorOpen, setIsSelectorOpen] = React.useState(false);
+  const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const {sortBy} = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
 
   // this three hooks need to get correct behaviour of mouse click event
-  const popUpRef = React.useRef(null);
-  const arrowRef = React.useRef(null);
-  const spanRef = React.useRef(null);
+  const popUpRef = useRef(null);
+  const arrowRef = useRef(null);
+  const spanRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const path = event.composedPath();
       if (!(path.includes(popUpRef.current!)
@@ -29,7 +30,13 @@ const Selector = () => {
     document.body.addEventListener("click", handleClickOutside);
 
     return () => document.body.removeEventListener("click", handleClickOutside);
-  }, [])
+  }, []);
+
+  const onSelectorChange = (item: {name: string,value:string}) => {
+    dispatch(setCurrentPage(1));
+    dispatch(setSortBy(item));
+  }
+
 
   return (
     <div  className={`${styles.selector} ${isSelectorOpen ? styles.active : ""}`}>
@@ -54,7 +61,7 @@ const Selector = () => {
                   <li
                     key={i}
                     className={item.value === sortBy.value ? styles.active : ""}
-                    onClick={() => dispatch(setSortBy(item))}
+                    onClick={() => onSelectorChange(item)}
                   >
                     {item.name}
                   </li>

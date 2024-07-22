@@ -4,6 +4,7 @@ import React, {useCallback, useState} from "react";
 import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../Redux/Slices/FiltersSlice.ts";
 import debounce from "lodash.debounce";
+import {setCurrentPage} from "../../Redux/Slices/PagesSlice.ts";
 
 
 const Searcher = () => {
@@ -11,6 +12,7 @@ const Searcher = () => {
   const dispatch = useDispatch();
 
   const updateSearchValue = useCallback(debounce((value) => {
+      dispatch(setCurrentPage(1));
       dispatch(setSearchValue(value));
       },500),
     []);
