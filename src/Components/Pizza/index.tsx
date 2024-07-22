@@ -45,7 +45,7 @@ const Pizza: FC<IPizzaProps> = ({
     }))
   };
 
-  const cartPizza: ICartItem | null = cartItems.find(cartItem =>
+  const cartPizza: ICartItem | undefined = cartItems.find(cartItem =>
     cartItem.item.id === id && cartItem.item.size === sizes[curSizeId] && cartItem.item.type === types[curThicknessId]);
 
   return (
