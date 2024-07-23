@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addItemToCart} from "../../Redux/Slices/CartSlice.ts";
 import {RootState} from "../../Redux/Store.ts";
 import {ICartItem} from "../../Redux/Types/ICartItem.ts";
+import {Link} from "react-router-dom";
 
 interface IPizzaProps {
   id: number,
@@ -52,7 +53,9 @@ const Pizza: FC<IPizzaProps> = ({
 
   return (
     <div className={styles.pizzaContainer}>
-      <img src={imgURL} alt="pizza"/>
+      <Link to={`id/${id}`}>
+        <img src={imgURL} alt="pizza"/>
+      </Link>
       <h3>{title}</h3>
       <div className={styles.filtersContainer}>
         <ul className="thickness">
