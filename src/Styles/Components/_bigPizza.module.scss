@@ -1,0 +1,97 @@
+.popUpPizza{
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+
+  a{
+    text-decoration: none;
+  }
+}
+
+.goBackBtn{
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  outline: none;
+  background-color: #FFFFFF;
+  right: 20px;
+  top: 20px;
+
+  svg,rect,path{
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover{
+    svg{
+      transform: scale(1.2);
+      rect{
+        stroke: #fe401e;
+        fill: #fe401e;
+      }
+
+      path{
+        fill: #FFFFFF;
+      }
+    }
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3vh;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  img{
+    max-width: 343px;
+    max-height: 343px;
+    margin-left: 150px;
+  }
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+
+  h2{
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  p{
+    max-width: 300px;
+    font-size: 20px;
+    margin-bottom: 68px;
+
+
+    &.chooseFilters{
+      font-size: 18px;
+      color: #8D8D8D;
+      margin-bottom: 28px;
+    }
+  }
+
+  button{
+    margin-top: 28px;
+    width: 296px;
+    height: 55px;
+    background: #FE5F1E;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+  }
+}
