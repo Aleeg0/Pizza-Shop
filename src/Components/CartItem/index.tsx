@@ -32,7 +32,7 @@ export const CartPizza: FC<ICartPizzaProps> = ({id,item,count}) => {
   return (
     <div className={styles.cartPizza}>
       <div className={styles.pizza}>
-        <img src={item.imgURL} alt="pizza"/>
+        <img src={`/Pizza-Shop${item.imgURL}`} alt="pizza"/>
         <div className={styles.title}>
           <h3>{item.title}</h3>
           <div className={styles.filters}>

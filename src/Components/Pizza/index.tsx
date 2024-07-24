@@ -54,7 +54,7 @@ export const Pizza: FC<IPizzaProps> = ({
   return (
     <div className={styles.pizzaContainer}>
       <Link to={`id/${id}`}>
-        <img src={imgURL} alt="pizza"/>
+        <img src={`/Pizza-Shop${imgURL}`} alt="pizza"/>
       </Link>
       <h3>{title}</h3>
       <div className={styles.filtersContainer}>
