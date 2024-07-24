@@ -10,6 +10,10 @@ body{
   width: 100%;
 }
 
+.no-scroll{
+  overflow: hidden;
+}
+
 .wrapper{
   width: 100 - 10vw;
   margin: 5vh 5vw 0 5vw;
