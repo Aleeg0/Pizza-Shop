@@ -6,6 +6,8 @@ import {useEffect, useRef, useState} from "react";
 import {addItemToCart} from "../Redux/Slices/CartSlice.ts";
 import styles from "../Styles/Pages/_popUpPizza.module.scss"
 import stylesPizza from "../Styles/Components/_pizza.module.scss"
+import AddToCartSvg from "../Components/SVGS/AddToCartSvg.tsx";
+import {ICartItem} from "../Redux/Types/ICartItem.ts";
 
 
 const PopUpPizza = () => {
@@ -18,9 +20,26 @@ const PopUpPizza = () => {
 
   const idAsNumber = Number(id);
 
-  const pizza = useSelector((state: RootState) =>
-   state.pizzas.pizzas.find(item => item.id === idAsNumber)
+  const {
+    title,
+    imgURL,
+    description,
+    types,
+    sizes,
+    price,
+    rating,
+    category
+  } = useSelector((state: RootState) =>
+   state.pizzas.pizzas.find(item => item.id === idAsNumber)!
   );
+
+  const cartPizza: ICartItem | undefined = useSelector((state:RootState) => (
+    state.cart.items.find(cartItem =>
+      cartItem.item.id === idAsNumber
+      && cartItem.item.size === sizes[curSizeId]
+      && cartItem.item.type === types[curThicknessId])
+  ));
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,25 +65,7 @@ const PopUpPizza = () => {
     document.body.addEventListener("click", handleClickOutside);
 
     return () => document.body.removeEventListener("click", handleClickOutside);
-  }, [ navigate]);
-
-  if (!pizza){
-    return (
-      <>
-      </>
-    );
-  }
-
-  const {
-    title,
-    imgURL,
-    description,
-    types,
-    sizes,
-    price,
-    rating,
-    category
-  } = pizza;
+  }, [navigate]);
 
   const goBack = () => {
     localStorage.setItem('isPopUpOpen','false');
@@ -96,7 +97,7 @@ const PopUpPizza = () => {
             <p className={styles.chooseFilters}>
               {`${types[curThicknessId]} dough, ${sizes[curSizeId]} sm.`}
             </p>
-            <p className="discription">{description}</p>
+            <p className={styles.description}>{description}</p>
             <div className={stylesPizza.filtersContainer}>
               <ul className="thickness">
                 {types.map((thickness, i) =>
@@ -118,9 +119,13 @@ const PopUpPizza = () => {
               </ul>
             </div>
             <button
+              type="button"
               onClick={onAddToCartClick}
+              className={`${stylesPizza.addToCartBtn} ${cartPizza ? stylesPizza.withValueBtn : ""}`}
             >
-              Add
+              <AddToCartSvg/>
+              <p>Add</p>
+              <span><p>{cartPizza && cartPizza.count}</p></span>
             </button>
           </div>
           <img src={imgURL} alt={"pizza"}/>
