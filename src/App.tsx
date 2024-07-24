@@ -4,9 +4,7 @@ import AppLayout from "./Layouts/AppLayout.tsx";
 import Home from "./Pages/Home.tsx";
 
 const LoadableNotFound = lazy(() => import("./Pages/NotFound"));
-
 const LoadableCart = lazy(() => import("./Pages/Cart"));
-
 const LoadablePopUpPizza = lazy(() => import("./Pages/PopUpPizza.tsx"));
 
 const App = () => {
