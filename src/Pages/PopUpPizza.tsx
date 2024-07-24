@@ -1,13 +1,12 @@
-import CloseSvg from "../Components/SVGS/CloseSvg.tsx";
+import {useEffect, useRef, useState} from "react";
 import {useNavigate, useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../Redux/Store.ts";
-import {useEffect, useRef, useState} from "react";
 import {addItemToCart} from "../Redux/Slices/CartSlice.ts";
+import {ICartItem} from "../Redux/Types/ICartItem.ts";
+import {CloseSvg,AddToCartSvg} from "../Components/SVGC";
 import styles from "../Styles/Pages/_popUpPizza.module.scss"
 import stylesPizza from "../Styles/Components/_pizza.module.scss"
-import AddToCartSvg from "../Components/SVGS/AddToCartSvg.tsx";
-import {ICartItem} from "../Redux/Types/ICartItem.ts";
 
 
 const PopUpPizza = () => {

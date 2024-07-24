@@ -1,14 +1,12 @@
-import RemoveCartItemSvg from "../SVGS/removeCartItemSvg.tsx";
-import DecrementCartItemSvg from "../SVGS/decrementCartItemSvg.tsx";
-import IncrementCartItemSvg from "../SVGS/incrementCartItemSvg.tsx";
-import styles from "../../Styles/Components/_cartPizza.module.scss"
-import {ICartPizza} from "../../Redux/Types/ICartPizza.ts";
 import {FC} from "react";
 import {useDispatch} from "react-redux";
 import {
   addItemToCart, removeAllItemsFromCartById,
   removeItemFromCartById
 } from "../../Redux/Slices/CartSlice.ts";
+import {ICartPizza} from "../../Redux/Types/ICartPizza.ts";
+import {RemoveCartItemSvg,DecrementCartItemSvg,IncrementCartItemSvg} from "../SVGC";
+import styles from "../../Styles/Components/_cartPizza.module.scss"
 
 interface ICartPizzaProps {
   id: number,

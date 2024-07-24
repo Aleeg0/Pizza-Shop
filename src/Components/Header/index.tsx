@@ -1,10 +1,10 @@
 import {FC, useEffect, useState} from 'react';
-import Logo from "/logo.svg";
-import styles from "../../Styles/Components/_header.module.scss";
-import CartSvg from "../SVGS/cartSvg.tsx";
 import {Link, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectCart} from "../../Redux/Slices/CartSlice.ts";
+import {CartSvg} from "../SVGC";
+import Logo from "/logo.svg";
+import styles from "../../Styles/Components/_header.module.scss";
 
 export const Header: FC = () => {
   const cart = useSelector(selectCart);

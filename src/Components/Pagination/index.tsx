@@ -1,7 +1,7 @@
-import styles from "../../Styles/Components/_pagination.module.scss"
+import {FC} from "react";
 import {useDispatch} from "react-redux";
 import {setCurrentPage} from "../../Redux/Slices/PagesSlice.ts";
-import {FC} from "react";
+import styles from "../../Styles/Components/_pagination.module.scss"
 
 interface PaginationProps {
   total_pages: number,

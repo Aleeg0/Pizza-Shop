@@ -1,9 +1,9 @@
-import searchImg from "../../assets/Searcher.svg";
-import styles from "../../Styles/Components/_searcher.module.scss"
 import React, {useCallback, useState} from "react";
 import {useDispatch} from "react-redux";
-import {setSearchValue} from "../../Redux/Slices/FiltersSlice.ts";
 import debounce from "lodash.debounce";
+import {setSearchValue} from "../../Redux/Slices/FiltersSlice.ts";
+import searchImg from "../../assets/Searcher.svg";
+import styles from "../../Styles/Components/_searcher.module.scss"
 
 
 export const Searcher = () => {

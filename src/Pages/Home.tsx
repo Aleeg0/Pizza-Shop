@@ -1,17 +1,13 @@
-import Categories from "../Components/Categories";
-import Searcher from "../Components/Searcher";
-import Selector from "../Components/Selector";
+import {useEffect, useState} from "react";
+import {Outlet, useNavigate} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
+import qs from "qs";
+import {Categories,Searcher,Selector,Pagination,PizzasContainer } from "../Components";
 import {AppDispatch, RootState} from "../Redux/Store.ts";
 import {fetchPizzas} from "../Redux/AsyncThunk/fetchPizzas.ts"
-import {useEffect, useState} from "react";
-import Pagination from "../Components/Pagination";
 import {selectFilters, setCategory, setSortBy, sortByValues} from "../Redux/Slices/FiltersSlice.ts";
-import qs from "qs";
 import {setCurrentPage} from "../Redux/Slices/PagesSlice.ts";
-import {Outlet, useNavigate} from "react-router";
 import {ILoadingStatus} from "../Redux/Types/ILoadingStatus.ts";
-import PizzasContainer from "../Components/PizzasContainer/PizzasContainer.tsx";
 import {selectPizzas} from "../Redux/Slices/PizzasSlice.ts";
 
 

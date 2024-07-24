@@ -1,13 +1,11 @@
-import styles from "../Styles/Pages/_cart.module.scss"
-import CartSvg from "../Components/SVGS/cartSvg.tsx";
-import TrashSvg from "../Components/SVGS/TrashSvg.tsx";
-import ThinArrowSvg from "../Components/SVGS/ThinArrowSvg.tsx";
 import {Link} from "react-router-dom";
-import CartPizza from "../Components/CartItem";
+import {CartPizza} from "../Components";
 import {useDispatch, useSelector} from "react-redux";
-import emptyCart from "../assets/emptyCart.svg"
 import {clearCart, selectCart} from "../Redux/Slices/CartSlice.ts";
 import {useAutoAnimate} from "@formkit/auto-animate/react";
+import {CartSvg,TrashSvg,ThinArrowSvg} from "../Components/SVGC";
+import emptyCart from "../assets/emptyCart.svg"
+import styles from "../Styles/Pages/_cart.module.scss"
 
 const Cart = () => {
   const {items, totalSum,totalCount} = useSelector(selectCart);

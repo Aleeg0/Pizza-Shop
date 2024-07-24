@@ -1,7 +1,7 @@
 import {useState,useRef,useEffect} from 'react';
-import SelectorArrow from "../../assets/selectorArrow.svg";
-import {selectFilters, setSortBy, sortByValues} from "../../Redux/Slices/FiltersSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
+import {selectFilters, setSortBy, sortByValues} from "../../Redux/Slices/FiltersSlice.ts";
+import SelectorArrow from "../../assets/selectorArrow.svg";
 import styles from "../../Styles/Components/_selector.module.scss"
 
 export const Selector = () => {

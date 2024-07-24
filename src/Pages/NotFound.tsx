@@ -1,6 +1,6 @@
-import pageNotFound from "../assets/PageNotFound.svg";
 import {Link} from "react-router-dom";
-import ThinArrowSvg from "../Components/SVGS/ThinArrowSvg.tsx";
+import {ThinArrowSvg} from "../Components/SVGC";
+import pageNotFound from "../assets/PageNotFound.svg";
 import styles from "../Styles/Pages/_cart.module.scss"
 
 const NotFound = () => {

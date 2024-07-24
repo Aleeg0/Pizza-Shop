@@ -1,5 +1,5 @@
-import {categories, selectFilters, setCategory} from "../../Redux/Slices/FiltersSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
+import {categories, selectFilters, setCategory} from "../../Redux/Slices/FiltersSlice.ts";
 import styles from "../../Styles/Components/_categories.module.scss"
 
 export const Categories = () => {

@@ -1,11 +1,11 @@
-import AddToCartSvg from "../SVGS/AddToCartSvg.tsx";
-import styles from "../../Styles/Components/_pizza.module.scss"
 import {FC, useState} from "react";
+import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {addItemToCart} from "../../Redux/Slices/CartSlice.ts";
 import {RootState} from "../../Redux/Store.ts";
 import {ICartItem} from "../../Redux/Types/ICartItem.ts";
-import {Link} from "react-router-dom";
+import {AddToCartSvg} from "../SVGC";
+import styles from "../../Styles/Components/_pizza.module.scss"
 
 interface IPizzaProps {
   id: number,

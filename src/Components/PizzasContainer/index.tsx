@@ -1,11 +1,10 @@
+import {useSelector} from "react-redux";
+import {Pizza, Skeleton} from "../";
 import {ILoadingStatus} from "../../Redux/Types/ILoadingStatus.ts";
 import {IPizza} from "../../Redux/Types/IPizza.ts";
-import Pizza from "../Pizza";
-import Skeleton from "../Pizza/Skeleton.tsx";
-import {useSelector} from "react-redux";
-import styles from "../../Styles/Components/_pizzasContainer.module.scss"
-import {useAutoAnimate} from "@formkit/auto-animate/react";
 import {selectPizzas} from "../../Redux/Slices/PizzasSlice.ts";
+import {useAutoAnimate} from "@formkit/auto-animate/react";
+import styles from "../../Styles/Components/_pizzasContainer.module.scss"
 
 export const PizzasContainer = () => {
   const {pizzas, loading} = useSelector(selectPizzas);
