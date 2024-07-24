@@ -2,7 +2,7 @@ import Header from "../Components/Header";
 import pageNotFound from "../assets/PageNotFound.svg";
 import {Link} from "react-router-dom";
 import ThinArrowSvg from "../Components/SVGS/ThinArrowSvg.tsx";
-import styles from "../Styles/Components/_cart.module.scss"
+import styles from "../Styles/Pages/_cart.module.scss"
 
 const NotFound = () => {
   return (

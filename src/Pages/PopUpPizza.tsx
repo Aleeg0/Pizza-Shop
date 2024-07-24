@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../Redux/Store.ts";
 import {useEffect, useRef, useState} from "react";
 import {addItemToCart} from "../Redux/Slices/CartSlice.ts";
-import styles from "../Styles/Components/_bigPizza.module.scss"
+import styles from "../Styles/Pages/_popUpPizza.module.scss"
 import stylesPizza from "../Styles/Components/_pizza.module.scss"
 
 

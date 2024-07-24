@@ -1,4 +1,4 @@
-import styles from "../Styles/Components/_cart.module.scss"
+import styles from "../Styles/Pages/_cart.module.scss"
 import CartSvg from "../Components/SVGS/cartSvg.tsx";
 import TrashSvg from "../Components/SVGS/TrashSvg.tsx";
 import ThinArrowSvg from "../Components/SVGS/ThinArrowSvg.tsx";
