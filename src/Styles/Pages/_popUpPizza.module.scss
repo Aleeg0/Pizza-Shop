@@ -47,6 +47,7 @@
 
 .content {
   position: relative;
+  top: -100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,11 +55,16 @@
   background-color: #FFFFFF;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease;
 
   img{
-    max-width: 343px;
-    max-height: 343px;
+    width: 343px;
+    height: 343px;
     margin-left: 150px;
+  }
+
+  &.show {
+    transform: translateY(100vh);
   }
 }
 
@@ -72,17 +78,16 @@
   }
 
   p{
+    &.chooseFilters{
+      font-size: 18px;
+      color: #8D8D8D;
+      margin-bottom: 28px;
+    }
 
     &.description{
       max-width: 300px;
       font-size: 20px;
       margin-bottom: 68px;
-    }
-
-    &.chooseFilters{
-      font-size: 18px;
-      color: #8D8D8D;
-      margin-bottom: 28px;
     }
   }
 
@@ -93,6 +98,58 @@
 
     svg{
       top: 20px
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .content{
+    img{
+      margin-left: 5vw;
+    }
+  }
+
+  .info{
+    h2{
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p{
+
+      &.chooseFilters{
+        font-size: 14px;
+        color: #8D8D8D;
+        margin-bottom: 18px;
+      }
+
+      &.description{
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .popUpPizza{
+    display: block;
+  }
+
+  .content{
+    flex-direction: column-reverse;
+    top: 100vh;
+    margin-top: 8vh;
+    height: 100vh;
+
+    img{
+      width: 280px;
+      height: 280px;
+      margin-left: 0;
+    }
+
+    &.show {
+      transform: translateY(-100vh);
     }
   }
 }
