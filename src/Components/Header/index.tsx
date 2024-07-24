@@ -1,14 +1,23 @@
-import {FC} from 'react';
+import {FC, useEffect, useState} from 'react';
 import Logo from "/logo.svg";
 import styles from "../../Styles/Components/_header.module.scss";
 import CartSvg from "../SVGS/cartSvg.tsx";
 import {Link, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {RootState} from "../../Redux/Store.ts";
+import {selectCart} from "../../Redux/Slices/CartSlice.ts";
 
 const Header: FC = () => {
-  const {totalSum, totalCount} = useSelector((state: RootState) => state.cart)
+  const cart = useSelector(selectCart);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const path = useLocation();
+
+  useEffect(() => {
+    if (isMounted) {
+      const data = JSON.stringify(cart);
+      localStorage.setItem("cartData",  data);
+    }
+    setIsMounted(true);
+  }, [cart.items]);
 
   return (
     <div className={styles.header}>
@@ -28,10 +37,10 @@ const Header: FC = () => {
                     type="button"
                     className={styles.cartButton}
                 >
-                    <p>{totalSum.toFixed(2)} $</p>
+                    <p>{cart.totalSum.toFixed(2)} $</p>
                     <span/>
                     <CartSvg/>
-                    <p>{totalCount}</p>
+                    <p>{cart.totalCount}</p>
                 </button>
             </Link>
         }
