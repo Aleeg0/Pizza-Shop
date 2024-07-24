@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import {RootState} from "../Store.ts";
 
 export const categories: string[] = [
   "All",
@@ -57,6 +58,7 @@ export const filtersSlice = createSlice({
   },
 })
 
+export const selectFilters = (state: RootState) => state.filter;
 export const {setCategory, setSortBy, setSearchValue} = filtersSlice.actions;
 
 export default filtersSlice.reducer;
