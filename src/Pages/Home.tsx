@@ -10,6 +10,7 @@ import {setCategory, setSortBy, sortByValues} from "../Redux/Slices/FiltersSlice
 import qs from "qs";
 import {setCurrentPage} from "../Redux/Slices/PagesSlice.ts";
 import {Outlet, useNavigate} from "react-router";
+import {ILoadingStatus} from "../Redux/Types/ILoadingStatus.ts";
 import PizzasContainer from "../Components/PizzasContainer/PizzasContainer.tsx";
 
 
@@ -21,6 +22,7 @@ const Home = () => {
   const [isPagination, setIsPagination] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(true);
   const navigate = useNavigate();
+  const {loading} = useSelector((state: RootState) => state.pizzas);
 
   // for filters
   useEffect(() => {
@@ -61,8 +63,8 @@ const Home = () => {
       }
       dispatch(setCurrentPage(params.page ? Number(params.page) : 1));
     }
-    console.log("aa");
     setIsMounted(false);
+
   }, []);
 
 
@@ -90,7 +92,7 @@ const Home = () => {
 
   return (
     <>
-      <Outlet/>
+      {loading === ILoadingStatus.SUCCEEDED && <Outlet/>}
       <div className="filters">
         <Categories/>
         <div className="inputFilters">
