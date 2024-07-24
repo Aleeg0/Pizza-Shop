@@ -1,4 +1,3 @@
-import Header from "../Components/Header";
 import Categories from "../Components/Categories";
 import Searcher from "../Components/Searcher";
 import Selector from "../Components/Selector";
@@ -10,7 +9,7 @@ import Pagination from "../Components/Pagination";
 import {setCategory, setSortBy, sortByValues} from "../Redux/Slices/FiltersSlice.ts";
 import qs from "qs";
 import {setCurrentPage} from "../Redux/Slices/PagesSlice.ts";
-import {useNavigate} from "react-router";
+import {Outlet, useNavigate} from "react-router";
 import PizzasContainer from "../Components/PizzasContainer/PizzasContainer.tsx";
 
 
@@ -54,6 +53,7 @@ const Home = () => {
   useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
+      console.log("params",params);
       dispatch(setCategory(params.category ? Number(params.category) : 0));
       if (params.sortBy){
         const querySortBy = sortByValues.find(item => item.value === params.sortBy);
@@ -61,6 +61,7 @@ const Home = () => {
       }
       dispatch(setCurrentPage(params.page ? Number(params.page) : 1));
     }
+    console.log("aa");
     setIsMounted(false);
   }, []);
 
@@ -89,7 +90,7 @@ const Home = () => {
 
   return (
     <>
-      <Header/>
+      <Outlet/>
       <div className="filters">
         <Categories/>
         <div className="inputFilters">
