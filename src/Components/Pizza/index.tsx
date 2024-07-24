@@ -84,7 +84,7 @@ const Pizza: FC<IPizzaProps> = ({
         <button
           type="button"
           onClick={onAddToCartClick}
-          className={cartPizza ? styles.withValueBtn : ""}
+          className={`${styles.addToCartBtn} ${cartPizza ? styles.withValueBtn : ""}`}
         >
           <AddToCartSvg/>
           <p>Add</p>
