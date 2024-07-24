@@ -13,11 +13,15 @@ import {ICartItem} from "../Redux/Types/ICartItem.ts";
 const PopUpPizza = () => {
   const [curSizeId, setCurSizeId] = useState<number>(0);
   const [curThicknessId, setCurThicknessId] = useState<number>(0);
-  const {id} = useParams();
+  const [isPopUpOpen, setIsPopUpOpen] = useState<boolean>(false);
+
+  // for click inspects
   const popUpRef = useRef<HTMLDivElement>(null);
   const blockRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
+  // for getting current pizza
+  const navigate = useNavigate();
+  const {id} = useParams();
   const idAsNumber = Number(id);
 
   const {
@@ -43,33 +47,26 @@ const PopUpPizza = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const isPopUpOpen = localStorage.getItem("isPopUpOpen");
-    console.log("location",isPopUpOpen);
-    if (isPopUpOpen === 'true') {
-      console.log("location In PopUp");
-      goBack();
-    }
-    else {
-      localStorage.setItem('isPopUpOpen', 'true');
-    }
-  }, [navigate]);
-
-  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      console.log("clickOutside");
       const path = event.composedPath();
       if (path.includes(blockRef.current!) && !path.includes(popUpRef.current!)) {
         goBack();
       }
     };
+
+    if (!isPopUpOpen)
+      setIsPopUpOpen(true);
+
+    document.body.classList.add("no-scroll");
     document.body.addEventListener("click", handleClickOutside);
 
     return () => document.body.removeEventListener("click", handleClickOutside);
-  }, [navigate]);
+  }, []);
 
   const goBack = () => {
-    localStorage.setItem('isPopUpOpen','false');
+    setIsPopUpOpen(false);
     navigate("/");
+    document.body.classList.remove("no-scroll");
   }
 
   const onAddToCartClick = () => {
@@ -88,7 +85,7 @@ const PopUpPizza = () => {
   return (
     <>
       <div ref={blockRef} className={styles.popUpPizza}>
-        <div ref={popUpRef} className={styles.content}>
+        <div ref={popUpRef} className={`${styles.content}  ${isPopUpOpen && styles.show}`}>
           <button className={styles.goBackBtn} onClick={goBack}>
             <CloseSvg/>
           </button>
