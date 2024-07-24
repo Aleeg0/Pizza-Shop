@@ -1,4 +1,4 @@
-.CartPizza{
+.cartPizza{
   padding-top: 30px;
   margin-bottom: 30px;
   border-top: 1px solid #F4F4F4;
@@ -38,6 +38,10 @@
     height: 80px;
     margin-right: 15px;
   }
+  
+  @media (max-width: 1080px) {
+    width: 200px;
+  }
 }
 
 .title{
@@ -50,6 +54,7 @@
   }
 
   p{
+    display: inline;
     font-size: 18px;
     color: #8D8D8D;
   }
@@ -113,5 +118,57 @@
         fill: #FFFFFF;
       }
     }
+  }
+}
+
+@media (max-width: 700px) {
+  .cartPizza{
+    b {
+      font-size: 18px;
+    }
+
+    button{
+      width: 26px;
+      height: 26px;
+      svg{
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+
+  .title{
+    h3{
+      font-size: 18px;
+    }
+
+    p{
+      display: block;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .cartPizza{
+    flex-wrap: wrap;
+  }
+
+  .pizza {
+    width: 150px;
+    order: 0;
+
+    img {
+      width: 76px;
+      height: 76px;
+      margin-right: 10px;
+    }
+  }
+
+  .controls{
+    order: 1;
+    justify-content: start;
+    column-gap: 2vw;
+    width: unset;
   }
 }
