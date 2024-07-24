@@ -1,8 +1,8 @@
 import axios from "axios";
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {RootState} from "./Store.ts";
-import {IPagination} from "./Types/IPagination.ts";
-import {MokkyResponse} from "./Types/MokkyResponse.ts";
+import {RootState} from "../Store.ts";
+import {IPagination} from "../Types/IPagination.ts";
+import {MokkyResponse} from "../Types/MokkyResponse.ts";
 
 interface IPizzaParams {
     categoryId: number,
