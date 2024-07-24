@@ -124,7 +124,7 @@ const PopUpPizza = () => {
               <span><p>{cartPizza && cartPizza.count}</p></span>
             </button>
           </div>
-          <img src={`/Pizza-Shop${imgURL}`} alt={"pizza"}/>
+          <img src={imgURL} alt={"pizza"}/>
         </div>
       </div>
     </>
