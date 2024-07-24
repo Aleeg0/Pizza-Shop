@@ -32,12 +32,15 @@ const CartPizza: FC<ICartPizzaProps> = ({id,item,count}) => {
   }
 
   return (
-    <div className={styles.CartPizza}>
+    <div className={styles.cartPizza}>
       <div className={styles.pizza}>
-        <img src="/pizzasImg/pizza-6.png" alt="pizza"/>
+        <img src={item.imgURL} alt="pizza"/>
         <div className={styles.title}>
           <h3>{item.title}</h3>
-          <p>{item.type}, {item.size} sm</p>
+          <div className={styles.filters}>
+            <p>{item.type}, </p>
+            <p> {item.size} sm</p>
+          </div>
         </div>
       </div>
       <div className={styles.controls}>
