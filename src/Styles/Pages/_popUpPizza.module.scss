@@ -72,10 +72,12 @@
   }
 
   p{
-    max-width: 300px;
-    font-size: 20px;
-    margin-bottom: 68px;
 
+    &.description{
+      max-width: 300px;
+      font-size: 20px;
+      margin-bottom: 68px;
+    }
 
     &.chooseFilters{
       font-size: 18px;
@@ -88,18 +90,9 @@
     margin-top: 28px;
     width: 296px;
     height: 55px;
-    background: #FE5F1E;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    color: #FFFFFF;
 
-    &:hover{
-      background: lighten(#FE5F1E,5%);
-    }
-
-    &:active{
-      background: darken(#FE5F1E,5%);
+    svg{
+      top: 20px
     }
   }
 }
