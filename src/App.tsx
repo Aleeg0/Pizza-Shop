@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router";
 import Cart from "./Pages/Cart.tsx";
 import NotFound from "./Pages/NotFound.tsx";
 import PopUpPizza from "./Pages/PopUpPizza.tsx";
-import AppLayout from "./layouts/AppLayout.tsx";
+import AppLayout from "./Layouts/AppLayout.tsx";
 
 const App = () => {
 
