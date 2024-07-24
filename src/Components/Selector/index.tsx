@@ -4,7 +4,7 @@ import {selectFilters, setSortBy, sortByValues} from "../../Redux/Slices/Filters
 import {useDispatch, useSelector} from "react-redux";
 import styles from "../../Styles/Components/_selector.module.scss"
 
-const Selector = () => {
+export const Selector = () => {
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const {sortBy} = useSelector(selectFilters);
   const dispatch = useDispatch();
@@ -69,5 +69,3 @@ const Selector = () => {
     </div>
   );
 };
-
-export default Selector;

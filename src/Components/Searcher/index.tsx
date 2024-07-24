@@ -6,7 +6,7 @@ import {setSearchValue} from "../../Redux/Slices/FiltersSlice.ts";
 import debounce from "lodash.debounce";
 
 
-const Searcher = () => {
+export const Searcher = () => {
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
 
@@ -33,5 +33,3 @@ const Searcher = () => {
     </div>
   );
 };
-
-export default Searcher;

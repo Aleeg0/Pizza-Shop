@@ -16,7 +16,7 @@ interface ICartPizzaProps {
   count: number
 }
 
-const CartPizza: FC<ICartPizzaProps> = ({id,item,count}) => {
+export const CartPizza: FC<ICartPizzaProps> = ({id,item,count}) => {
   const dispatch = useDispatch();
 
   const onDecrementClick = () => {
@@ -69,5 +69,3 @@ const CartPizza: FC<ICartPizzaProps> = ({id,item,count}) => {
     </div>
 );
 };
-
-export default CartPizza;

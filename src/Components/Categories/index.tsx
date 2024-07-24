@@ -2,7 +2,7 @@ import {categories, selectFilters, setCategory} from "../../Redux/Slices/Filters
 import {useDispatch, useSelector} from "react-redux";
 import styles from "../../Styles/Components/_categories.module.scss"
 
-const Categories = () => {
+export const Categories = () => {
   const {categoryId} = useSelector(selectFilters);
   const dispatch = useDispatch();
 
@@ -22,5 +22,3 @@ const Categories = () => {
     </div>
   );
 };
-
-export default Categories;

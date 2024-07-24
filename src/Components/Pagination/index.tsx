@@ -9,7 +9,7 @@ interface PaginationProps {
   onPaginationChange: (status:boolean) => void,
 }
 
-const Pagination: FC<PaginationProps> = ({current_page,total_pages, onPaginationChange}) => {
+export const Pagination: FC<PaginationProps> = ({current_page,total_pages, onPaginationChange}) => {
   const dispatch = useDispatch();
 
   const onClickFirst = () => {
@@ -54,5 +54,3 @@ const Pagination: FC<PaginationProps> = ({current_page,total_pages, onPagination
     </div>
   );
 };
-
-export default Pagination;

@@ -6,7 +6,7 @@ import {Link, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectCart} from "../../Redux/Slices/CartSlice.ts";
 
-const Header: FC = () => {
+export const Header: FC = () => {
   const cart = useSelector(selectCart);
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const path = useLocation();
@@ -49,5 +49,3 @@ const Header: FC = () => {
     </div>
   );
 };
-
-export default Header;

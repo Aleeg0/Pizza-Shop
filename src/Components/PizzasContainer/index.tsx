@@ -7,7 +7,7 @@ import styles from "../../Styles/Components/_pizzasContainer.module.scss"
 import {useAutoAnimate} from "@formkit/auto-animate/react";
 import {selectPizzas} from "../../Redux/Slices/PizzasSlice.ts";
 
-const PizzasContainer = () => {
+export const PizzasContainer = () => {
   const {pizzas, loading} = useSelector(selectPizzas);
   const SKELETONS_COUNT: number = 4;
   const [animationRef] = useAutoAnimate();
@@ -28,5 +28,3 @@ const PizzasContainer = () => {
     </div>
   );
 };
-
-export default PizzasContainer;

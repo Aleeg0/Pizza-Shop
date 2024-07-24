@@ -18,7 +18,7 @@ interface IPizzaProps {
   category: number,
 }
 
-const Pizza: FC<IPizzaProps> = ({
+export const Pizza: FC<IPizzaProps> = ({
   id,
   title,
   imgURL,
@@ -94,5 +94,3 @@ const Pizza: FC<IPizzaProps> = ({
     </div>
   );
 };
-
-export default Pizza;
