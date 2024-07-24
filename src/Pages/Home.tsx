@@ -3,26 +3,27 @@ import Searcher from "../Components/Searcher";
 import Selector from "../Components/Selector";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../Redux/Store.ts";
-import {fetchPizzas} from "../Redux/fetchPizzas.ts"
+import {fetchPizzas} from "../Redux/AsyncThunk/fetchPizzas.ts"
 import {useEffect, useState} from "react";
 import Pagination from "../Components/Pagination";
-import {setCategory, setSortBy, sortByValues} from "../Redux/Slices/FiltersSlice.ts";
+import {selectFilters, setCategory, setSortBy, sortByValues} from "../Redux/Slices/FiltersSlice.ts";
 import qs from "qs";
 import {setCurrentPage} from "../Redux/Slices/PagesSlice.ts";
 import {Outlet, useNavigate} from "react-router";
 import {ILoadingStatus} from "../Redux/Types/ILoadingStatus.ts";
 import PizzasContainer from "../Components/PizzasContainer/PizzasContainer.tsx";
+import {selectPizzas} from "../Redux/Slices/PizzasSlice.ts";
 
 
 const Home = () => {
 
-  const {categoryId,sortBy,searchValue} = useSelector((state: RootState) => state.filter);
+  const {categoryId,sortBy,searchValue} = useSelector(selectFilters);
   const {paginationData} = useSelector((state: RootState) => state.pages);
   const dispatch = useDispatch<AppDispatch>();
   const [isPagination, setIsPagination] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(true);
   const navigate = useNavigate();
-  const {loading} = useSelector((state: RootState) => state.pizzas);
+  const {loading} = useSelector(selectPizzas);
 
   // for filters
   useEffect(() => {

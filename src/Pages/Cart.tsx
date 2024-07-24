@@ -5,13 +5,12 @@ import ThinArrowSvg from "../Components/SVGS/ThinArrowSvg.tsx";
 import {Link} from "react-router-dom";
 import CartPizza from "../Components/CartItem";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../Redux/Store.ts";
 import emptyCart from "../assets/emptyCart.svg"
-import {clearCart} from "../Redux/Slices/CartSlice.ts";
+import {clearCart, selectCart} from "../Redux/Slices/CartSlice.ts";
 import {useAutoAnimate} from "@formkit/auto-animate/react";
 
 const Cart = () => {
-  const {items, totalSum,totalCount} = useSelector((state: RootState) => state.cart);
+  const {items, totalSum,totalCount} = useSelector(selectCart);
   const dispatch = useDispatch();
   const [animationRef] = useAutoAnimate();
 

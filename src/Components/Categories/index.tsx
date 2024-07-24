@@ -1,10 +1,9 @@
-import {categories, setCategory} from "../../Redux/Slices/FiltersSlice.ts";
+import {categories, selectFilters, setCategory} from "../../Redux/Slices/FiltersSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../Redux/Store.ts";
 import styles from "../../Styles/Components/_categories.module.scss"
 
 const Categories = () => {
-  const {categoryId} = useSelector((state: RootState) => state.filter);
+  const {categoryId} = useSelector(selectFilters);
   const dispatch = useDispatch();
 
   return (

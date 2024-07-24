@@ -1,13 +1,12 @@
 import {useState,useRef,useEffect} from 'react';
 import SelectorArrow from "../../assets/selectorArrow.svg";
-import {setSortBy, sortByValues} from "../../Redux/Slices/FiltersSlice.ts";
+import {selectFilters, setSortBy, sortByValues} from "../../Redux/Slices/FiltersSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../Redux/Store.ts";
 import styles from "../../Styles/Components/_selector.module.scss"
 
 const Selector = () => {
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
-  const {sortBy} = useSelector((state: RootState) => state.filter);
+  const {sortBy} = useSelector(selectFilters);
   const dispatch = useDispatch();
 
   // this three hooks need to get correct behaviour of mouse click event
