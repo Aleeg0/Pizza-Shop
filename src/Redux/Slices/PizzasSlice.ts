@@ -1,8 +1,9 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {ILoadingStatus} from "../Types/ILoadingStatus.ts";
 import {IPizza} from "../Types/IPizza.ts";
-import {fetchPizzas} from "../fetchPizzas.ts";
+import {fetchPizzas} from "../AsyncThunk/fetchPizzas.ts";
 import {MokkyResponse} from "../Types/MokkyResponse.ts";
+import {RootState} from "../Store.ts";
 
 export interface pizzaState {
   pizzas: IPizza[],
@@ -37,6 +38,7 @@ export const pizzasSlice = createSlice({
   }
 })
 
+export const selectPizzas = (state: RootState) => state.pizzas;
 export const {setPizzas} = pizzasSlice.actions;
 
 export default pizzasSlice.reducer;
