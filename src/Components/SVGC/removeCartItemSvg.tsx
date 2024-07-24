@@ -1,4 +1,4 @@
-const RemoveCartItemSvg = () => {
+export const RemoveCartItemSvg = () => {
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="16" cy="16" r="15" fill="white" stroke="#D7D7D7" strokeWidth="2"/>
@@ -8,5 +8,3 @@ const RemoveCartItemSvg = () => {
     </svg>
   );
 };
-
-export default RemoveCartItemSvg;
