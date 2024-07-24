@@ -46,7 +46,7 @@ button{
 
   @media (max-height: 800px){
     img{
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
   }
 }
@@ -215,6 +215,10 @@ button{
 
   &:active{
     background-color: darken(#a5a4a4, 15%);
+  }
+
+  @media (max-height: 800px){
+    margin-bottom: 20px;
   }
 }
 
