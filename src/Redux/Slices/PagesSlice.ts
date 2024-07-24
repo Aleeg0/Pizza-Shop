@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchPizzas} from "../fetchPizzas.ts";
+import {fetchPizzas} from "../AsyncThunk/fetchPizzas.ts";
 import {ILoadingStatus} from "../Types/ILoadingStatus.ts";
 import {IPagination} from "../Types/IPagination.ts";
 import {MokkyResponse} from "../Types/MokkyResponse.ts";
