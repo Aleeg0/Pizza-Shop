@@ -135,13 +135,32 @@
 @media (max-width: 500px) {
   .popUpPizza{
     display: block;
+    overflow: auto;
+
+    // for scroll
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &.-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .content{
     flex-direction: column-reverse;
     top: 100vh;
     margin-top: 8vh;
-    height: 100vh;
+    border-radius: 20px 20px 0 0;
+    min-height: 100vh;
+    overflow: auto;
+
+    // for scroll
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &.-webkit-scrollbar {
+      display: none;
+    }
 
     img{
       width: 280px;
