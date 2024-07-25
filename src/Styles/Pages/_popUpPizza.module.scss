@@ -136,6 +136,7 @@
   .popUpPizza{
     display: block;
     overflow: auto;
+    height: 100vh;
 
     // for scroll
     scrollbar-width: none;
@@ -151,8 +152,7 @@
     top: 100vh;
     margin-top: 8vh;
     border-radius: 20px 20px 0 0;
-    min-height: 100vh;
-    overflow: auto;
+    height: 93vh;
 
     // for scroll
     scrollbar-width: none;
@@ -169,7 +169,7 @@
     }
 
     &.show {
-      transform: translateY(-100vh);
+      transform: translateY(-92vh);
     }
   }
 }
